@@ -1,0 +1,30 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "react-app", // Use "react-app" instead of "plugin:react/recommended"
+    "plugin:jsx-a11y/recommended" // Add the plugin for accessibility linting
+  ],
+  "overrides": [
+    {
+      "files": ["**/*.js", "**/*.jsx"], // Specify the files to be included
+      "rules": {
+        "jsx-a11y/click-events-have-key-events": "off",
+        "react/prop-types": "off"
+      }
+    }
+  ],
+  "parserOptions": {
+    "ecmaVersion": 12, // Use the correct ECMAScript version
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "jsx-a11y" // Add the plugin for accessibility linting
+  ],
+  "rules": {
+    // Add any additional rules or configurations here if needed
+  }
+}

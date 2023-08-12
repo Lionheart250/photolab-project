@@ -1,0 +1,53 @@
+/* PhotoList.scss */
+.photo-list__item {
+  margin: 24px;
+  padding: 8px;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  max-width: fit-content;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.photo-list__item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.photo-list__image {
+  user-select: none;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.photo-list__user-profile {
+  object-fit: cover;
+  border-radius: 100%;
+  vertical-align: middle;
+  margin-right: 8px;
+  width: 40px;
+  height: 40px;
+}
+
+.photo-list__user-details {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.photo-list__user-profile {
+  margin-right: 8px;
+}
+
+.photo-list__user-info {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.photo-list__user-location {
+  color: #838383;
+  font-size: 12px;
+}
