@@ -1,12 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "../styles/PhotoListItem.scss";
+import React from 'react';
+import PropTypes from 'prop-types';
+import PhotoFavButton from './PhotoFavButton'; // Make sure to import the correct path
+import '../styles/PhotoListItem.scss';
 
 const PhotoListItem = (props) => {
   const { location, urls, user } = props.photoData;
 
   return (
     <div className="photo-list__item">
+      <PhotoFavButton isFavorite={false} onClick={() => { /* Handle click here */ }} />
       <img src={urls.regular} alt={`Photograph by ${user.username}`} />
       <div className="photo-details">
         <div className="location">
