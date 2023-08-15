@@ -1,14 +1,34 @@
 .photo-list {
+  margin-top: 100px; /* Adjust distance between navbar and first picture */
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+  flex-direction: column;
+  align-items: center;
 }
 
-.photo-list:after {
-  content: "";
-  flex: 0 1 30%;
-  margin: 5px;
+.photo-list__item {
+  margin-bottom: 20px;
 }
+
+.photo-wrapper {
+  position: relative;
+  width: 500px; /* Set the width of the square container for images */
+  height: 500px; /* Set the height to match the width */
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Scale the image to cover the entire container */
+  object-position: center;
+}
+
+.profile-pic {
+  width: 50px; /* Set the width of the profile image */
+  height: 50px; /* Set the height to match the width */
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* Rest of your styles */

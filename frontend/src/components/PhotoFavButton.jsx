@@ -1,36 +1,24 @@
-import React, { useCallback, useState } from 'react';
-import PropTypes from 'prop-types';
-import FavIcon from './FavIcon';
-import '../styles/PhotoFavButton.scss';
+// PhotoFavButton.js
+import React from 'react';
+import { useAppContext, actions } from '../context';
+import useApplicationData from '../hooks/useApplicationData';
 
-const PhotoFavButton = ({ isFavorite, onClick }) => {
-  const [favorite, setFavorite] = useState(isFavorite);
 
-  const handleButtonClick = useCallback(() => {
-    setFavorite((prevFavorite) => !prevFavorite);
-    onClick();
-  }, [onClick]);
+const PhotoFavButton = ({ isFavorite, photoId }) => {
+  const { state, dispatch } = useAppContext();
+
+  const toggleFavorite = () => {
+    dispatch({ type: actions.TOGGLE_FAVORITE, payload: photoId });
+  };
 
   return (
-    <div
-      className={`photo-list__fav-icon ${favorite ? 'active' : ''}`}
-      role="button"
-      tabIndex={0}
-      onClick={handleButtonClick}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          handleButtonClick();
-        }
-      }}
+    <button
+      className={`photo-list__fav-icon ${isFavorite ? 'active' : ''}`}
+      onClick={toggleFavorite}
     >
-      <FavIcon selected={favorite} /> {/* Pass selected prop to FavIcon */}
-    </div>
+      {/* Render your favorite icon SVG */}
+    </button>
   );
-};
-
-PhotoFavButton.propTypes = {
-  isFavorite: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired,
 };
 
 export default PhotoFavButton;

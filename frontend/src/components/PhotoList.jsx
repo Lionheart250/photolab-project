@@ -1,16 +1,29 @@
-import React from "react";
-import PhotoListItem from "./PhotoListItem"; // Import the PhotoListItem component
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
+import PhotoFavButton from './PhotoFavButton';
+import useApplicationData from '../hooks/useApplicationData';
 
-import "../styles/PhotoList.scss";
+import '../styles/PhotoList.scss';
 
 const PhotoList = ({ photos }) => {
   return (
-    <ul className="photo-list">
-      {photos.map((photo) => (
-        <PhotoListItem key={photo.id} photoData={photo} />
+    <div className="photo-list">
+      {photos.map((photoData) => (
+        <div key={photoData.id} className="photo-list__item">
+          <div className="photo-wrapper">
+            <img src={photoData.urls.regular} alt={`Photograph by ${photoData.user.username}`} className="photo" />
+            <PhotoFavButton isFavorite={photoData.isFavorite} onClick={() => {}} />
+          </div>
+          <div className="photo-details">
+            <div className="location">
+              {photoData.location.city}, {photoData.location.country}
+            </div>
+            <div className="username">{photoData.user.username}</div>
+            <img src={photoData.user.profile} alt={`Profile of ${photoData.user.username}`} className="profile-pic" />
+          </div>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 };
 
@@ -23,15 +36,13 @@ PhotoList.propTypes = {
         country: PropTypes.string.isRequired,
       }).isRequired,
       urls: PropTypes.shape({
-        full: PropTypes.string.isRequired,
         regular: PropTypes.string.isRequired,
       }).isRequired,
       user: PropTypes.shape({
-        id: PropTypes.string.isRequired,
         username: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
         profile: PropTypes.string.isRequired,
       }).isRequired,
+      isFavorite: PropTypes.bool.isRequired,
     })
   ).isRequired,
 };

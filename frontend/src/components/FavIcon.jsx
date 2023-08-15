@@ -1,4 +1,6 @@
 import React from 'react';
+import useApplicationData from '../hooks/useApplicationData';
+
 
 const FavIcon = ({displayAlert, selected}) => {
   return (

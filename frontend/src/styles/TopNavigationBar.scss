@@ -1,20 +1,60 @@
+/* TopNavigationBar.scss */
+
 .top-nav-bar {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  padding: 8px;
   align-items: center;
-  -webkit-box-shadow: 0 4px 6px -6px #222;
-  -moz-box-shadow: 0 4px 6px -6px #222;
-  box-shadow: 0 4px 6px -6px #222;
-  height: 72px;
+  background-color: #333;
+  padding: 10px 20px;
+  color: white;
 }
 
-.top-nav-bar__logo {
-  text-decoration: overline;
-  font-weight: 500;
+.top-nav-bar--logo {
   font-size: 24px;
-  color: #111;
-  text-underline-position: auto;
-  margin-left: 24px;
+}
+
+.top-nav-bar--nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.top-nav-bar--nav li {
+  margin-left: 20px;
+}
+
+.top-nav-bar--nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.top-nav-bar--nav a:hover {
+  text-decoration: underline;
+}
+
+/* Styling for the FavIcon */
+.top-nav-bar--nav .photo-list__fav-icon.liked path {
+  fill: #C80000; /* Change this to the desired color */
+}
+
+.top-nav-bar--nav .photo-list__fav-icon path {
+  fill: #EEEEEE; /* Default color */
+}
+
+.top-nav-bar--nav .photo-list__fav-icon.selected path {
+  fill: #C80000; /* Red color */
+}
+
+/* Styling for the notification */
+.top-nav-bar--nav .liked {
+  color: #C80000; /* Red color */
+  margin-left: 8px;
+  font-weight: bold;
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: white;
+  border-radius: 4px;
+  font-size: 14px;
 }
