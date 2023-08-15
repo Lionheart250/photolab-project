@@ -12,17 +12,18 @@ import { AppProvider } from './context';
 import useApplicationData, { ACTIONS } from './hooks/useApplicationData';
 
 const App = () => {
-  const { dispatch } = useApplicationData();
+  const { state, dispatch } = useApplicationData();
 
   useEffect(() => {
     // Fetch initial data here...
   }, []);
 
+  const isAnyPhotoFavorited = state.favoritedPhotos.length > 0; 
+
   return (
     <AppProvider>
       <Router>
         <div className="App">
-          <TopNavigation />
           <Routes>
             <Route path="/" element={<HomeRoute />} />
             {/* Define routes for each topic */}

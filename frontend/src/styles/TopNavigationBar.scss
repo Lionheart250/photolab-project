@@ -8,10 +8,21 @@
   padding: 10px 20px;
   color: white;
 }
+/* Set the initial color to white */
+.top-nav-bar--nav ul li a svg path {
+  fill: #f5efef; /* Default color (white) */
+}
+
+.top-nav-bar--nav ul li a svg.active path {
+  fill: #C80000; /* Red color when active (photo is liked) */
+}
+
 
 .top-nav-bar--logo {
   font-size: 24px;
+  color: black;
 }
+
 
 .top-nav-bar--nav ul {
   list-style-type: none;
@@ -33,28 +44,12 @@
 .top-nav-bar--nav a:hover {
   text-decoration: underline;
 }
-
-/* Styling for the FavIcon */
-.top-nav-bar--nav .photo-list__fav-icon.liked path {
-  fill: #C80000; /* Change this to the desired color */
+.red-link {
+  color: #C80000;
 }
 
-.top-nav-bar--nav .photo-list__fav-icon path {
-  fill: #EEEEEE; /* Default color */
-}
-
-.top-nav-bar--nav .photo-list__fav-icon.selected path {
-  fill: #C80000; /* Red color */
-}
-
-/* Styling for the notification */
-.top-nav-bar--nav .liked {
-  color: #C80000; /* Red color */
-  margin-left: 8px;
-  font-weight: bold;
-  display: inline-block;
-  padding: 4px 8px;
-  background-color: white;
-  border-radius: 4px;
-  font-size: 14px;
+/* Style the heart icon in the "Liked" link */
+/* Apply the red fill color to the SVG icon when there is a liked photo */
+.red-link svg path {
+  fill: #C80000;
 }

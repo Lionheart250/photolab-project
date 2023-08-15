@@ -3,12 +3,10 @@ import FavIcon from '../components/FavIcon';
 import PhotoDetailsModal from './PhotoDetailsModal';
 import closeSymbol from '../assets/closeSymbol.svg';
 import '../styles/HomeRoute.scss';
-
-// Import the useApplicationData hook
 import useApplicationData from '../hooks/useApplicationData';
+import TopNavigation from '../components/TopNavigationBar';
 
 const HomeRoute = () => {
-  // Use the hook to access the state and actions
   const { state, updateToFavPhotoIds, setPhotoSelected, onClosePhotoDetailsModal } = useApplicationData();
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
@@ -24,6 +22,8 @@ const HomeRoute = () => {
 
   return (
     <div className="home-route">
+      <TopNavigation isAnyPhotoFavorited={state.favoritedPhotos.length > 0} />
+
       <div className="photo-list photo-list--grid">
         {state.photos.map((photoData) => (
           <div key={photoData.id} className="photo-list__item">
@@ -66,7 +66,14 @@ const HomeRoute = () => {
           </div>
         ))}
       </div>
-      {selectedPhoto && <PhotoDetailsModal selectedPhoto={selectedPhoto} onClose={closeModal} state={state} />}
+      {selectedPhoto && (
+        <PhotoDetailsModal
+          selectedPhoto={selectedPhoto}
+          onClose={closeModal}
+          isLiked={state.favoritedPhotos.includes(selectedPhoto.id)}
+          isAnyPhotoFavorited={state.favoritedPhotos.length > 0}
+        />
+      )}
     </div>
   );
 };

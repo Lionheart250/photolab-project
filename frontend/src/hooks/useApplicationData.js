@@ -1,5 +1,7 @@
 import { useReducer, useEffect } from 'react';
 
+
+
 export const ACTIONS = {
   FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
   FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',

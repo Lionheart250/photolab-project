@@ -4,6 +4,7 @@ import React, { createContext, useContext, useReducer } from 'react';
 // Define the initial state
 const initialState = {
   favoritedPhotos: [],
+  photos: [], // Add the photos array to the initial state
 };
 
 // Define actions to modify the state

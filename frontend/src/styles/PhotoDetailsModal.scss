@@ -1,5 +1,5 @@
 .photo-details-modal {
-  background-color: white;
+  background-color: rgb(196, 176, 176);
   box-shadow: 0 0 0 50vmax rgba(0,0,0,.5);
   position: absolute;
   top: 55%;
@@ -41,6 +41,9 @@
   border: white;
   border-radius: 50%;
   z-index: 2;
+}
+.photo-details-modal__fav-icon.active {
+  color: red($color: #ff0000);
 }
 
 .photo-details-modal__image {
@@ -89,4 +92,16 @@
   margin-bottom: 24px;
   width: 90%;
 }
+
+.photo-details-modal__similar-photo .photo-details-modal__fav-icon {
+  position: relative;
+  top: 45px;
+  left: -15px;
+  margin-left: 20px;
+  background-color: white;
+  border: white;
+  border-radius: 50%;
+  z-index: 2;
+}
+
 
