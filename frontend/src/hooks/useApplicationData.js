@@ -6,7 +6,8 @@ export const ACTIONS = {
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SELECT_PHOTO: 'SELECT_PHOTO',
-  DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS'
+  DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
+  SET_PHOTOS_FOR_TOPIC: 'SET_PHOTOS_FOR_TOPIC' // New action type for photos of a specific topic
 };
 
 function reducer(state, action) {
@@ -23,6 +24,11 @@ function reducer(state, action) {
       return { ...state, selectedPhoto: action.payload };
     case ACTIONS.DISPLAY_PHOTO_DETAILS:
       return { ...state, isPhotoDetailsModalOpen: true };
+    case ACTIONS.SET_PHOTOS_FOR_TOPIC:
+      return {
+        ...state,
+        photosForTopic: { ...state.photosForTopic, [action.payload.topicId]: action.payload.photos }
+      };
     default:
       throw new Error(`Tried to reduce with unsupported action type: ${action.type}`);
   }
@@ -34,7 +40,8 @@ export default function useApplicationData() {
     topics: [],
     favoritedPhotos: [],
     selectedPhoto: null,
-    isPhotoDetailsModalOpen: false
+    isPhotoDetailsModalOpen: false,
+    photosForTopic: {} // New state to store photos for specific topics
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -58,7 +65,23 @@ export default function useApplicationData() {
   };
 
   useEffect(() => {
-    // Fetch data or perform other side effects here
+    // Fetch photo data from the backend server (http://localhost:8001/api/photos)
+    fetch('http://localhost:8001/api/photos')
+      .then(response => response.json())
+      .then(data => 
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+      .catch(error => {
+        console.error('Error fetching photo data:', error);
+      });
+
+    // Fetch topic data from the backend server (http://localhost:8001/api/topics)
+    fetch('http://localhost:8001/api/topics')
+      .then(response => response.json())
+      .then(data => 
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
+      .catch(error => {
+        console.error('Error fetching topic data:', error);
+      });
   }, []);
 
   return {

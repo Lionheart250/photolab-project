@@ -7,7 +7,7 @@ import '../styles/HomeRoute.scss';
 // Import the useApplicationData hook
 import useApplicationData from '../hooks/useApplicationData';
 
-const HomeRoute = ({ photos }) => {
+const HomeRoute = () => {
   // Use the hook to access the state and actions
   const { state, updateToFavPhotoIds, setPhotoSelected, onClosePhotoDetailsModal } = useApplicationData();
   const [selectedPhoto, setSelectedPhoto] = useState(null);
@@ -25,7 +25,7 @@ const HomeRoute = ({ photos }) => {
   return (
     <div className="home-route">
       <div className="photo-list photo-list--grid">
-        {photos.map((photoData) => (
+        {state.photos.map((photoData) => (
           <div key={photoData.id} className="photo-list__item">
             <button
               className="photo-list__fav-icon"
