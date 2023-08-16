@@ -7,10 +7,11 @@
 .photo-list {
   margin-top: 100px; /* Adjust distance between navbar and first picture */
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* Update this line */
   grid-gap: 20px;
   justify-content: center;
 }
+
 
 .photo-list__item {
   position: relative;
@@ -22,8 +23,8 @@
 
 .photo-list__image {
   position: relative;
-  width: 500px; /* Set a fixed width for the item container */
-  height: 500px;
+  width: 100%; /* Set width to 100% to scale the image within the container */
+  height: 100%; /* Allow the height to adjust automatically based on the aspect ratio */
   object-fit: cover;
   object-position: center;
 }
@@ -101,16 +102,16 @@
 }
 
 .profile-img {
-  width: 50px; /* Set the width of the profile image */
-  height: 50px; /* Set the height to match the width */
+  width: 35px; /* Set the width of the profile image */
+  height: 35px; /* Set the height to match the width */
   border-radius: 50%;
   margin-right: 10px;
   order: -1; /* Move the profile image to the left */
 }
 
 img.photo-list__user-profile {
-  width: 75px; /* Set the width of the profile image */
-  height: 75px; /* Set the height to match the width */
+  width: 60px; /* Set the width of the profile image */
+  height: 55px; /* Set the height to match the width */
   border-radius: 50%;
   margin-right: 10px;
   margin-top: 20px;

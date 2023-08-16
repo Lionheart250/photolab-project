@@ -5,6 +5,14 @@
   align-items: center;
 }
 
+.photo-list--grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Display 5 items in a row */
+  grid-gap: 20px; /* Add gap between grid items */
+  justify-content: center; /* Horizontally center the grid items */
+}
+
+
 .photo-list__item {
   margin-bottom: 20px;
 }

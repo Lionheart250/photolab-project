@@ -11,6 +11,14 @@
   cursor: pointer;
 }
 
+.photo-list--grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Display 5 items in a row */
+  grid-gap: 20px; /* Add gap between grid items */
+  justify-content: center; /* Horizontally center the grid items */
+}
+
+
 .photo-list__item:hover {
   transform: translateY(-4px);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);

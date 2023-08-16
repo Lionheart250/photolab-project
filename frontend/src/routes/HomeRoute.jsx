@@ -1,35 +1,28 @@
 import React, { useState } from 'react';
 import FavIcon from '../components/FavIcon';
-import PhotoDetailsModal from './PhotoDetailsModal';
-import closeSymbol from '../assets/closeSymbol.svg';
-import '../styles/HomeRoute.scss';
 import useApplicationData from '../hooks/useApplicationData';
-import TopNavigation from '../components/TopNavigationBar';
+import '../styles/HomeRoute.scss'; // Import the CSS file
 
-const HomeRoute = () => {
-  const { state, updateToFavPhotoIds, setPhotoSelected, onClosePhotoDetailsModal } = useApplicationData();
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
+const HomeRoute = ({ onPhotoLiked, onPhotoUnliked, openModal, closeModal }) => {
+  const { state, updateToFavPhotoIds } = useApplicationData();
 
-  const openModal = (photoData) => {
-    setPhotoSelected(photoData);
-    setSelectedPhoto(photoData);
+  const handleLikePhoto = (photoId) => {
+    updateToFavPhotoIds(photoId);
+    onPhotoLiked();
   };
 
-  const closeModal = () => {
-    onClosePhotoDetailsModal();
-    setSelectedPhoto(null);
+  const handleImageClick = (photoData) => {
+    openModal(photoData); // Pass the clicked photo data to openModal
   };
 
   return (
     <div className="home-route">
-      <TopNavigation isAnyPhotoFavorited={state.favoritedPhotos.length > 0} />
-
       <div className="photo-list photo-list--grid">
         {state.photos.map((photoData) => (
           <div key={photoData.id} className="photo-list__item">
             <button
               className="photo-list__fav-icon"
-              onClick={() => updateToFavPhotoIds(photoData.id)}
+              onClick={() => handleLikePhoto(photoData.id)}
             >
               <FavIcon
                 displayAlert={state.favoritedPhotos.includes(photoData.id)}
@@ -39,7 +32,7 @@ const HomeRoute = () => {
             <div className="photo-content">
               <button
                 className="photo-list__image-button"
-                onClick={() => openModal(photoData)}
+                onClick={() => handleImageClick(photoData)} // Call handleImageClick on image click
               >
                 <img
                   src={photoData.urls.regular}
@@ -66,14 +59,6 @@ const HomeRoute = () => {
           </div>
         ))}
       </div>
-      {selectedPhoto && (
-        <PhotoDetailsModal
-          selectedPhoto={selectedPhoto}
-          onClose={closeModal}
-          isLiked={state.favoritedPhotos.includes(selectedPhoto.id)}
-          isAnyPhotoFavorited={state.favoritedPhotos.length > 0}
-        />
-      )}
     </div>
   );
 };

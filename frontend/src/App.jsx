@@ -1,41 +1,128 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import TopNavigation from './components/TopNavigationBar';
 import HomeRoute from './routes/HomeRoute';
-import Topic1Details from './routes/Topic1Details'; // Import components for each topic
+import { AppProvider } from './context';
+import Topic1Details from './routes/Topic1Details';
 import Topic2Details from './routes/Topic2Details';
 import Topic3Details from './routes/Topic3Details';
 import Topic4Details from './routes/Topic4Details';
 import Topic5Details from './routes/Topic5Details';
-import LikedPhotos from './routes/LikedPhotos'; // Import the component for "Liked" category
-import { AppProvider } from './context';
-import useApplicationData, { ACTIONS } from './hooks/useApplicationData';
+import LikedPhotos from './routes/LikedPhotos';
+import PhotoDetailsModal from './routes/PhotoDetailsModal';
 
 const App = () => {
-  const { state, dispatch } = useApplicationData();
+  const [isAnyPhotoFavorited, setIsAnyPhotoFavorited] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
-  useEffect(() => {
-    // Fetch initial data here...
-  }, []);
+  const openModal = (photoData) => {
+    setSelectedPhoto(photoData);
+    setIsModalOpen(true);
+  };
 
-  const isAnyPhotoFavorited = state.favoritedPhotos.length > 0; 
+  const closeModal = () => {
+    setSelectedPhoto(null);
+    setIsModalOpen(false);
+  };
+
+  const handlePhotoLiked = () => {
+    setIsAnyPhotoFavorited(true);
+  };
+
+  const handlePhotoUnliked = () => {
+    setIsAnyPhotoFavorited(false);
+  };
 
   return (
     <AppProvider>
       <Router>
         <div className="App">
+          <TopNavigation
+            isAnyPhotoFavorited={isAnyPhotoFavorited}
+            openModal={() => openModal()} // Pass an empty function for now
+          />
           <Routes>
-            <Route path="/" element={<HomeRoute />} />
             {/* Define routes for each topic */}
-            <Route path="/topics/1" element={<Topic1Details />} />
-            <Route path="/topics/2" element={<Topic2Details />} />
-            <Route path="/topics/3" element={<Topic3Details />} />
-            <Route path="/topics/4" element={<Topic4Details />} />
-            <Route path="/topics/5" element={<Topic5Details />} />
-            {/* Define route for "Liked" category */}
-            <Route path="/liked" element={<LikedPhotos />} />
-            {/* Add other routes here */}
+            {/* ... other routes ... */}
+            {/* Define the HomeRoute and pass the necessary props */}
+            <Route
+              path="/"
+              element={
+                <HomeRoute
+                  onPhotoLiked={handlePhotoLiked}
+                  onPhotoUnliked={handlePhotoUnliked}
+                  openModal={openModal}
+                  closeModal={closeModal}
+                />
+              }
+            />
+            <Route 
+            path="/topics/1"
+             element={
+              <Topic1Details
+              onPhotoLiked={handlePhotoLiked}
+              onPhotoUnliked={handlePhotoUnliked}
+              openModal={openModal}
+              closeModal={closeModal}
+            />
+           }
+          />
+            <Route
+            path="/topics/2" 
+            element={
+            <Topic2Details
+            onPhotoLiked={handlePhotoLiked}
+              onPhotoUnliked={handlePhotoUnliked}
+              openModal={openModal}
+              closeModal={closeModal}
+             />
+             }
+           /> 
+            <Route
+            path="/topics/3" 
+            element={
+            <Topic3Details
+            onPhotoLiked={handlePhotoLiked}
+              onPhotoUnliked={handlePhotoUnliked}
+              openModal={openModal}
+              closeModal={closeModal}
+             />
+             }
+           />
+            <Route
+            path="/topics/4" 
+            element={
+            <Topic4Details
+            onPhotoLiked={handlePhotoLiked}
+              onPhotoUnliked={handlePhotoUnliked}
+              openModal={openModal}
+              closeModal={closeModal}
+             />
+             }
+           />
+            <Route
+            path="/topics/5" 
+            element={
+            <Topic5Details
+            onPhotoLiked={handlePhotoLiked}
+              onPhotoUnliked={handlePhotoUnliked}
+              openModal={openModal}
+              closeModal={closeModal}
+             />
+             }
+           />
           </Routes>
+          {/* Render the modal */}
+          {isModalOpen && (
+            <PhotoDetailsModal
+              selectedPhoto={selectedPhoto}
+              onClose={closeModal}
+              onLikeToggle={handlePhotoLiked}
+              onPhotoLiked={handlePhotoLiked}
+              onPhotoUnliked={handlePhotoUnliked}
+            />
+          )}
         </div>
       </Router>
     </AppProvider>
@@ -43,5 +130,3 @@ const App = () => {
 };
 
 export default App;
-
-

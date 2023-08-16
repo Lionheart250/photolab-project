@@ -1,13 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useAppContext } from '../context';
 import FavIcon from './FavIcon';
 import '../styles/TopNavigationBar.scss';
 import topics from '../mocks/topics';
 
 const TopNavigation = ({ isAnyPhotoFavorited }) => {
-  const { state } = useAppContext(); // Use the custom hook
-
   return (
     <div className={`top-nav-bar ${isAnyPhotoFavorited ? 'red-heart' : ''}`}>
       <div className="top-nav-bar--logo">PhotoLabs</div>
@@ -24,7 +21,7 @@ const TopNavigation = ({ isAnyPhotoFavorited }) => {
         to="/liked"
         className={`${
           isAnyPhotoFavorited ? 'red-link' : ''
-        } ${state.favoritedPhotos.length > 0 ? 'active' : ''}`}
+        } ${isAnyPhotoFavorited ? 'active' : ''}`}
       >
         <FavIcon isLiked={isAnyPhotoFavorited} />
       </Link>
