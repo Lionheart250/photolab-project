@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import axios from 'axios'; 
 import TopNavigation from './components/TopNavigationBar';
 import HomeRoute from './routes/HomeRoute';
 import { AppProvider } from './context';
@@ -15,6 +16,27 @@ const App = () => {
   const [isAnyPhotoFavorited, setIsAnyPhotoFavorited] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [photoData, setPhotoData] = useState([]);
+
+  useEffect(() => {
+    // Fetch photo data from API and update state
+    axios.get('/api/photos')
+      .then(response => {
+        setPhotoData(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching photo data:', error);
+      });
+  
+    // Fetch topic data from API and update state
+    axios.get('/api/topics')
+      .then(response => {
+        // Update state with the fetched topic data
+      })
+      .catch(error => {
+        console.error('Error fetching topic data:', error);
+      });
+  }, []);
 
   const openModal = (photoData) => {
     setSelectedPhoto(photoData);
@@ -65,6 +87,8 @@ const App = () => {
               onPhotoUnliked={handlePhotoUnliked}
               openModal={openModal}
               closeModal={closeModal}
+              photoData={photoData} // Pass the fetched photo data
+              topicData={[]}
             />
            }
           />
@@ -73,9 +97,11 @@ const App = () => {
             element={
             <Topic2Details
             onPhotoLiked={handlePhotoLiked}
-              onPhotoUnliked={handlePhotoUnliked}
-              openModal={openModal}
-              closeModal={closeModal}
+      onPhotoUnliked={handlePhotoUnliked}
+      openModal={openModal}
+      closeModal={closeModal}
+      photoData={photoData} // Pass the fetched photo data
+      topicData={[]} // Pass an initial value or an empty array
              />
              }
            /> 
@@ -84,9 +110,11 @@ const App = () => {
             element={
             <Topic3Details
             onPhotoLiked={handlePhotoLiked}
-              onPhotoUnliked={handlePhotoUnliked}
-              openModal={openModal}
-              closeModal={closeModal}
+      onPhotoUnliked={handlePhotoUnliked}
+      openModal={openModal}
+      closeModal={closeModal}
+      photoData={photoData} // Pass the fetched photo data
+      topicData={[]} // Pass an initial value or an empty array
              />
              }
            />
@@ -95,9 +123,11 @@ const App = () => {
             element={
             <Topic4Details
             onPhotoLiked={handlePhotoLiked}
-              onPhotoUnliked={handlePhotoUnliked}
-              openModal={openModal}
-              closeModal={closeModal}
+      onPhotoUnliked={handlePhotoUnliked}
+      openModal={openModal}
+      closeModal={closeModal}
+      photoData={photoData} // Pass the fetched photo data
+      topicData={[]} // Pass an initial value or an empty array
              />
              }
            />
@@ -106,9 +136,11 @@ const App = () => {
             element={
             <Topic5Details
             onPhotoLiked={handlePhotoLiked}
-              onPhotoUnliked={handlePhotoUnliked}
-              openModal={openModal}
-              closeModal={closeModal}
+      onPhotoUnliked={handlePhotoUnliked}
+      openModal={openModal}
+      closeModal={closeModal}
+      photoData={photoData} // Pass the fetched photo data
+      topicData={[]} // Pass an initial value or an empty array
              />
              }
            />
