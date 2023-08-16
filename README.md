@@ -40,3 +40,19 @@ npm start
 Access the application in your web browser at http://localhost:3000.
 
 
+
+## Screenshots
+
+![Screenshot 1](https://github.com/Lionheart250/photolab-project/blob/main/docs/Main%20Page.png?raw=true)
+*Main Page*
+
+![Screenshot 2](https://github.com/Lionheart250/photolab-project/blob/main/docs/topics1.png?raw=true)
+*Topics 1*
+
+![Screenshot 3](https://github.com/Lionheart250/photolab-project/blob/main/docs/topics2.png?raw=true)
+*Topics 2*
+
+![Screenshot 4](https://github.com/Lionheart250/photolab-project/blob/main/docs/topics3.png?raw=true)
+*Topics 3*
+
+
