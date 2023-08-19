@@ -41,5 +41,6 @@
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.33.1",
     "sass": "^1.59.2"
-  }
+  },
+  "proxy": "http://localhost:8001"
 }

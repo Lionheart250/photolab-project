@@ -1,23 +1,16 @@
 import React from "react";
-import PropTypes from "prop-types";
 import "../styles/TopicListItem.scss";
-import useApplicationData from '../hooks/useApplicationData';
 
+const TopicListItem = ({ topic, onTopicSelect }) => {
+  const handleClick = () => {
+    onTopicSelect(topic.id);
+  };
 
-const TopicListItem = ({ topic }) => {
   return (
-    <div className="topic-list__item">
-      {topic.label}
-    </div>
+    <button onClick={handleClick} className="topic-list__item">
+      <span>{topic.title}</span>
+    </button>
   );
-};
-
-TopicListItem.propTypes = {
-  topic: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    slug: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-  }).isRequired,
 };
 
 export default TopicListItem;

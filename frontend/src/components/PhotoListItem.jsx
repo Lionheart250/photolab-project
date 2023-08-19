@@ -1,41 +1,41 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import PhotoFavButton from './PhotoFavButton';
-import useApplicationData from '../hooks/useApplicationData';
-import '../styles/PhotoListItem.scss';
+import React, { useState } from "react";
+import PhotoFavButton from "./PhotoFavButton";
+import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = (props) => {
-  const { location, urls, user } = props.photoData;
+  const { id, location, urls, user } = props.data;
+  const {setSelectPhotoData, favorites, setIsModalVisible, toggleFavorite } = props;
+  const isFavorite = favorites.includes(id);
+//Modal
+  const handleOpenModal = () => {
+    setSelectPhotoData(props.data);
+    setIsModalVisible(true);
+  };
+
+  const onToggle = () => {
+    toggleFavorite(id);
+  }
 
   return (
     <div className="photo-list__item">
-      <img src={urls.regular} alt={`Photograph by ${user.username}`} />
-      <div className="photo-fav-button-container">
-        <PhotoFavButton isFavorite={false} onClick={() => {}} />
-      </div>
-      <div className="photo-details">
-        <div className="location">
-          {location.city}, {location.country}
+      <PhotoFavButton isFavorite={isFavorite} onToggle={onToggle} />
+      <button onClick={handleOpenModal} className="photo-button">
+        <img src={urls.regular} alt=" " className="photo-list__image" />
+      </button>
+      <div className="personal">
+        <div className="info">
+          <h2>{user.username}</h2>
+          <p>
+            {location.city}, {location.country}
+          </p>
         </div>
-        <div className="username">{user.username}</div>
+        <img alt=" "
+          src={user.profile}
+          className="photo-list__user-profile"
+        />
       </div>
     </div>
   );
-};
-
-PhotoListItem.propTypes = {
-  photoData: PropTypes.shape({
-    location: PropTypes.shape({
-      city: PropTypes.string.isRequired,
-      country: PropTypes.string.isRequired,
-    }).isRequired,
-    urls: PropTypes.shape({
-      regular: PropTypes.string.isRequired,
-    }).isRequired,
-    user: PropTypes.shape({
-      username: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
 };
 
 export default PhotoListItem;

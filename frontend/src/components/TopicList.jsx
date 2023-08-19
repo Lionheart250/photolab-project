@@ -1,32 +1,12 @@
-import React from "react";
-import TopicListItem from "./TopicListItem";
-import useApplicationData from '../hooks/useApplicationData';
-import "../styles/TopicList.scss";
+import React from 'react';
+import TopicListItem from './TopicListItem';
+import '../styles/TopicList.scss';
 
-const sampleDataForTopicList = [
-  {
-    id: "1",
-    slug: "topic-1",
-    label: "Nature",
-  },
-  {
-    id: "2",
-    slug: "topic-2",
-    label: "Travel",
-  },
-  {
-    id: "3",
-    slug: "topic-3",
-    label: "Food",
-  },
-  // Add more topics as needed
-];
-
-const TopicList = () => {
+const TopicList = ({topics, onTopicSelect}) => {
   return (
-    <div className="topic-list">
-      {sampleDataForTopicList.map((topic) => (
-        <TopicListItem key={topic.id} topic={topic} />
+    <div className="top-nav-bar__topic-list">
+      {topics.map(topic => (
+        <TopicListItem key={topic.id} topic={topic} onTopicSelect={onTopicSelect} /> //left topic is prop, right one is object
       ))}
     </div>
   );
