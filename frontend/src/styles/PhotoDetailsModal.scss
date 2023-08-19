@@ -9,6 +9,7 @@
   width: 55%;
   overflow-y: scroll;
   border-radius: 12px;
+  z-index: 1;
 }
 
 .photo-details-modal__close-button {
@@ -32,19 +33,11 @@
   position: relative;
 }
 
-.photo-details-modal__fav-icon {
-  position: absolute;
-  top: 15px;
-  left: 10px;
+.photo-list__fav-icon {
+  margin-top: 35px;
   margin-left: 20px;
-  background-color: white;
-  border: white;
-  border-radius: 50%;
-  z-index: 2;
 }
-.photo-details-modal__fav-icon.active {
-  color: red($color: #ff0000);
-}
+
 
 .photo-details-modal__image {
   max-width: 95%;
@@ -92,16 +85,4 @@
   margin-bottom: 24px;
   width: 90%;
 }
-
-.photo-details-modal__similar-photo .photo-details-modal__fav-icon {
-  position: relative;
-  top: 45px;
-  left: -15px;
-  margin-left: 20px;
-  background-color: white;
-  border: white;
-  border-radius: 50%;
-  z-index: 2;
-}
-
 

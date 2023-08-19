@@ -1,35 +1,20 @@
-/* PhotoList.scss */
 .photo-list__item {
   margin: 24px;
-  margin-top: 100px;
   padding: 8px;
-  border: 1px solid lightgray;
+  border-width: 0.5px;
+  border-color: lightgray;
+  border-style: solid;
   border-radius: 8px;
   max-width: fit-content;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  cursor: pointer;
-}
-
-.photo-list--grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* Display 5 items in a row */
-  grid-gap: 20px; /* Add gap between grid items */
-  justify-content: center; /* Horizontally center the grid items */
-}
-
-
-.photo-list__item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  max-height: fit-content;
 }
 
 .photo-list__image {
+  border-radius: 8px 8px 0px 0px;
   user-select: none;
   width: 100%;
-  height: 200px;
+  
   object-fit: cover;
-  border-radius: 8px 8px 0px 0px;
 }
 
 .photo-list__user-profile {
@@ -43,20 +28,15 @@
 
 .photo-list__user-details {
   display: flex;
-  align-items: center;
-  margin-top: 8px;
-}
-
-.photo-list__user-profile {
-  margin-right: 8px;
 }
 
 .photo-list__user-info {
-  font-weight: 600;
-  font-size: 14px;
+  margin-top: 5px;
+  font-weight: 700;
+  font-size: 12px;
+  margin-left: 8px;
 }
 
 .photo-list__user-location {
   color: #838383;
-  font-size: 12px;
 }

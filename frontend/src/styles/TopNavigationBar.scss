@@ -2,56 +2,40 @@
 
 .top-nav-bar {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  width: 100%;
   background-color: #fffdfd;
   padding: 10px 20px;
   color: white;
 }
-/* Set the initial color to white */
-.top-nav-bar--nav ul li a svg path {
-  fill: #f5efef; /* Default color (white) */
-}
-
-.top-nav-bar--nav ul li a svg.active path {
-  fill: #C80000; /* Red color when active (photo is liked) */
-}
-
 
 .top-nav-bar--logo {
   font-size: 24px;
   color: black;
   margin-right: 650px;
 }
-
-
-.top-nav-bar--nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+.top-nav-bar-section {
   display: flex;
   align-items: center;
-  margin-left: 400px;
+  flex-direction: row;
 }
 
-.top-nav-bar--nav li {
-  margin-left: 20px;
-}
-
-.top-nav-bar--nav a {
-  text-decoration: none;
-  color: rgb(0, 0, 0);
-  font-weight: bold;
+.top-nav-bar__logo {
+  text-decoration: overline;
+  font-weight: 500;
+  font-size: 24px;
+  color: #111;
+  text-underline-position: auto;
+  margin-left: 24px;
 }
 
 .top-nav-bar--nav a:hover {
   text-decoration: underline;
 }
-.red-link {
-  color: #C80000;
-}
-
-/* Style the heart icon in the "Liked" link */
-/* Apply the red fill color to the SVG icon when there is a liked photo */
-.red-link svg path {
-  fill: #C80000;
+.fav-badge{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 }

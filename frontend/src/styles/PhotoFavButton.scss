@@ -1,5 +1,5 @@
 .photo-list__fav-icon {
-  position: absolute; /* Position absolutely within the photo-wrapper */
+  position: relative; /* Position absolutely within the photo-wrapper */
   top: 8px;
   left: 8px;
   cursor: pointer;
@@ -13,7 +13,6 @@
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s, color 0.3s;
-  z-index: 1;
 }
 
 .photo-list__fav-icon:hover {
@@ -44,5 +43,4 @@
   font-size: 10px;
   color: white;
   font-weight: bold;
-  z-index: 2;
 }
