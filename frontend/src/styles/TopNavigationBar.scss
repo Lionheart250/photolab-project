@@ -1,28 +1,30 @@
 /* TopNavigationBar.scss */
 
-.top-nav-bar {
+.top-nav {
+  border-bottom: 4px solid rgb(0, 0, 0); /* Add this line for the bold line */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background-color: #fffdfd;
+  background-color: #ffffff;
   padding: 10px 20px;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
-.top-nav-bar--logo {
+
+.top-nav__logo {
   font-size: 24px;
   color: black;
   margin-right: 650px;
 }
-.top-nav-bar-section {
+.top-nav__nav {
   display: flex;
   align-items: center;
   flex-direction: row;
 }
 
-.top-nav-bar__logo {
+.top-nav__logo {
   text-decoration: overline;
   font-weight: 500;
   font-size: 24px;

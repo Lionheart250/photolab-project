@@ -1,26 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoListItem.scss";
 
-const PhotoListItem = (props) => {
-  const { id, location, urls, user } = props.data;
-  const {setSelectPhotoData, favorites, setIsModalVisible, toggleFavorite } = props;
+const PhotoListItem = ({
+  data,
+  setSelectPhotoData,
+  favorites,
+  setIsModalVisible,
+  toggleFavorite
+}) => {
+  const { id, location, urls, user } = data;
   const isFavorite = favorites.includes(id);
-//Modal
+
   const handleOpenModal = () => {
-    setSelectPhotoData(props.data);
+    setSelectPhotoData(data);
     setIsModalVisible(true);
   };
 
   const onToggle = () => {
     toggleFavorite(id);
-  }
+  };
 
   return (
     <div className="photo-list__item">
       <PhotoFavButton isFavorite={isFavorite} onToggle={onToggle} />
       <button onClick={handleOpenModal} className="photo-button">
-        <img src={urls.regular} alt=" " className="photo-list__image" />
+        <img src={urls.regular} alt="" className="photo-list__image" />
       </button>
       <div className="personal">
         <div className="info">
@@ -29,7 +34,8 @@ const PhotoListItem = (props) => {
             {location.city}, {location.country}
           </p>
         </div>
-        <img alt=" "
+        <img
+          alt=""
           src={user.profile}
           className="photo-list__user-profile"
         />

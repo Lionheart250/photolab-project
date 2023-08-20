@@ -1,11 +1,29 @@
-import React from 'react';
+import React from "react";
+import TopNavigationBar from "../components/TopNavigationBar";
+import PhotoList from "../components/PhotoList";
+import "../styles/HomeRoute.scss";
 
-import '../styles/HomeRoute.scss';
-
-const HomeRoute = () => {
+const HomeRoute = ({
+  photos,
+  topics,
+  setSelectPhotoData,
+  setFavorites,
+  favorites,
+  setIsModalVisible,
+  toggleFavorite,
+  onTopicSelect
+}) => {
   return (
     <div className="home-route">
-      {/* Insert React */}
+      <TopNavigationBar favoritesLength={favorites.length} topics={topics} onTopicSelect={onTopicSelect} />
+      <PhotoList
+        photos={photos}
+        setFavorites={setFavorites}
+        favorites={favorites}
+        setSelectPhotoData={setSelectPhotoData}
+        setIsModalVisible={setIsModalVisible}
+        toggleFavorite={toggleFavorite}
+      />
     </div>
   );
 };

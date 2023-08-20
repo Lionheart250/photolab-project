@@ -2,7 +2,13 @@ import React from "react";
 import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
 
-const PhotoList = ({setIsModalVisible, setSelectPhotoData, photos, favorites, toggleFavorite }) => {
+const PhotoList = ({
+  setIsModalVisible,
+  setSelectPhotoData,
+  photos,
+  favorites,
+  toggleFavorite
+}) => {
   return (
     <ul className="photo-list">
       {photos.map((data) => (

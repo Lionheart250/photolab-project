@@ -12,8 +12,12 @@ const PhotoDetailsModal = ({
   toggleFavorite,
   setIsModalVisible
 }) => {
-
   const isFavorite = favorites.includes(selectPhotoData.id);
+
+  const handleToggleFavorite = () => {
+    toggleFavorite(selectPhotoData.id);
+  };
+
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={onCloseModal}>
@@ -22,12 +26,16 @@ const PhotoDetailsModal = ({
       <div className="photo-details-modal__images">
         <PhotoFavButton
           isFavorite={isFavorite}
-          onToggle={() => toggleFavorite(selectPhotoData.id)}
+          onToggle={handleToggleFavorite}
         />
-        <img src={selectPhotoData.urls.full} alt=" " className="photo-details-modal__image" />
+        <img
+          src={selectPhotoData.urls.full}
+          alt="Selected"
+          className="photo-details-modal__image"
+        />
       </div>
       <div className="photo-details-modal__header">
-        <p>Similar Photos</p>
+        <h2>Related Photos</h2>
       </div>
       <PhotoList
         photos={Object.values(selectPhotoData.similar_photos)}

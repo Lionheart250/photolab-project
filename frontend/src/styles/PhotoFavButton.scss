@@ -1,10 +1,9 @@
-.photo-list__fav-icon {
+.photo-fav-button__icon {
+  border: 4px solid red;
   position: relative; /* Position absolutely within the photo-wrapper */
-  top: 8px;
-  left: 8px;
+  top: 0px;
+  left: 0px;
   cursor: pointer;
-  border: none;
-  background-color: transparent;
   width: 32px;
   height: 32px;
   text-align: center;
@@ -14,33 +13,36 @@
   justify-content: center;
   transition: background-color 0.3s, color 0.3s;
 }
-
-.photo-list__fav-icon:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-.photo-list__fav-icon.active {
-  background-color: #C80000;
-  color: white;
-}
-
-.photo-list__fav-icon-svg {
-  width: 20px;
-  height: 17px;
-}
-
-.photo-list__fav-icon-circle {
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  width: 14px;
-  height: 14px;
-  background-color: #C80000;
+button.photo-fav-button {
+  position: relative; /* Position absolutely within the photo-wrapper */
+  top: 38px;
+  right: 0px;
+  cursor: pointer;
+  border: none;
+  background-color: transparentize($color: #fafafa, $amount:.85);
+  
+ 
   border-radius: 50%;
   display: flex;
+ z-index: 1;
+  
+  transition: background-color 0.3s, color 0.3s;
+}
+.photo-fav-button  {
+  position: relative; /* Position absolutely within the photo-wrapper */
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+  border-width: 0.1px;
+  border: 4px;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  border-radius: 50%;
+  display: flex;
+  border: 4px solid red;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
-  color: white;
-  font-weight: bold;
+  
 }
+

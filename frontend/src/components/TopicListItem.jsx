@@ -8,7 +8,7 @@ const TopicListItem = ({ topic, onTopicSelect }) => {
 
   return (
     <button onClick={handleClick} className="topic-list__item">
-      <span>{topic.title}</span>
+      <strong>{topic.title}</strong>
     </button>
   );
 };

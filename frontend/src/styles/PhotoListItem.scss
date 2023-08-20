@@ -2,20 +2,21 @@
   margin: 24px;
   padding: 8px;
   border-width: 0.5px;
-  border-color: lightgray;
+  border-color: rgb(255, 0, 0);
   border-style: solid;
   border-radius: 8px;
-  max-width: fit-content;
-  max-height: fit-content;
+  max-width: 400px;
+  max-height: 600px;
 }
 
 .photo-list__image {
-  border-radius: 8px 8px 0px 0px;
+  border-radius: 0% 0px 0px 0px;
   user-select: none;
-  width: 100%;
-  
+  width: 350px; /* Limit the maximum width to 350px */
+  height: 300px; /* Limit the maximum height to 300px */
   object-fit: cover;
 }
+
 
 .photo-list__user-profile {
   object-fit: cover;
@@ -39,4 +40,12 @@
 
 .photo-list__user-location {
   color: #838383;
+}
+
+
+@media (max-width: 400px) {
+  .photo-list__image {
+    max-width: 100%; /* Change max-width to 100% for smaller viewports */
+    max-height: auto; /* Remove the max-height constraint */
+  }
 }
